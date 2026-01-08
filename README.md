@@ -157,6 +157,7 @@ They are available **upon request**, in professional or evaluative contexts.
 
 ---
 
+
 ## **Architecture Overview**
 
 ORI is designed as a **layered, responsibility-driven system**, where each component has a clearly bounded role.  
@@ -331,6 +332,7 @@ This is a deliberate design constraint, not a temporary limitation.
 
 ---
 
+
 ## **Key Design Decisions and Trade-offs**
 
 ORI is the result of a series of **intentional design decisions**, each addressing a specific risk commonly observed in conversational analytics systems.
@@ -492,6 +494,7 @@ Every limitation in the system corresponds to a risk that has been consciously e
 
 ---
 
+
 ## **Guarantees and Boundaries**
 
 ORI is designed to provide **explicit guarantees** about what the system does and, equally important, what it deliberately does not do.
@@ -641,6 +644,7 @@ In ORI, **constraint is treated as an asset**, not a limitation.
 
 ---
 
+
 ### **⬛ End of Section 4**
 
 ## **v0.6-stable Scope and Future Evolution**
@@ -752,6 +756,23 @@ The architecture, execution model, and selected outputs are shared for professio
 ---
 
 ### **⬛ End of Section 5**
+
+---
+
+
+## **Author and Disclosure**
+
+**Author**
+ORI has been designed and developed by Virginia Levy Abulafia.
+
+**Disclosure**
+The development of this system was carried out by Virginia Levy Abulafia, with collaborative support from ChatGPT for selected activities including architectural review, debugging assistance, prompt drafting, and iterative design refinement.
+
+All technical decisions, system architecture, execution logic, data handling choices, and code implementation are the direct responsibility and work of the author.
+
+ChatGPT was used strictly as a support tool and did not autonomously design, implement, or make decisions about the system.
+
+
 
 ### **⬛ End of Technical README (v0.6-stable)**
 
