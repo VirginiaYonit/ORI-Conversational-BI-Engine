@@ -1,3 +1,19 @@
+<p align="left">
+  <img src="assets/logo_ori_minimal.svg" width="120"/>
+</p>
+
+
+# ORI · Conversational BI Insight Engine  
+**Versione:** CBI-Engine v0.6  
+![Version](https://img.shields.io/badge/CBI--Engine-v0.6-blue?style=flat-square)
+![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-forestgreen?style=flat-square)
+![Dataset Agnostic](https://img.shields.io/badge/Dataset-Agnostic%20(YAML--Driven)-teal?style=flat-square)
+![No Numerical Hallucinations](https://img.shields.io/badge/Design-No%20Hallucination-critical?style=flat-square)
+![Deterministic Mode](https://img.shields.io/badge/Mode-Deterministic%20Tabular-orange?style=flat-square)
+![PDF Reporting](https://img.shields.io/badge/Reporting-PDF%20Generation-lightgrey?style=flat-square)
+![Architecture](https://img.shields.io/badge/Architecture-Modular%20·%20Pipeline--Driven-9cf?style=flat-square)
+
+
 # **ORI – Conversational BI Insight Engine**
 
 **Technical Architecture Overview (v0.6-stable)**
