@@ -14,8 +14,6 @@
 ![Architecture](https://img.shields.io/badge/Architecture-Modular%20·%20Pipeline--Driven-9cf?style=flat-square)
 
 
-# **ORI – Conversational BI Insight Engine**
-
 **Technical Architecture Overview (v0.6-stable)**
 
 ## **Executive Summary**
