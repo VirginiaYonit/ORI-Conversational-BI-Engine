@@ -1,0 +1,23 @@
+<svg width="350" height="80" viewBox="0 0 240 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="oriGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#90caf9"/>
+      <stop offset="100%" stop-color="#81c784"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cerchio -->
+  <circle cx="40" cy="40" r="26" fill="none" stroke="url(#oriGradientDark)" stroke-width="6"/>
+
+  <!-- Raggio/Luce -->
+  <line x1="40" y1="40" x2="70" y2="20" stroke="#ffeb3b" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Testo -->
+  <text x="90" y="100" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" fill="#ffffff">
+    ORI
+  </text>
+
+  <text x="90" y="100" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#cccccc">
+    Conversational BI Insight Engine
+  </text>
+</svg>
