@@ -3,8 +3,8 @@
 </p>
 
 
-# ORI · Conversational BI Insight Engine  
-**Versione:** CBI-Engine v0.6.1 
+# ORI · Conversational BI Insight Engine
+
 ![Version](https://img.shields.io/badge/CBI--Engine-v0.6.1-blue?style=flat-square)
 ![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-forestgreen?style=flat-square)
 ![Dataset Agnostic](https://img.shields.io/badge/Dataset-Agnostic%20(YAML--Driven)-teal?style=flat-square)
@@ -14,7 +14,7 @@
 ![Architecture](https://img.shields.io/badge/Architecture-Modular%20·%20Pipeline--Driven-9cf?style=flat-square)
 
 
-**Technical Architecture Overview (v0.6-stable)**
+**Technical Architecture Overview (v0.6.1-stable)**
 
 ## **Executive Summary**
 
