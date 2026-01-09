@@ -4,8 +4,8 @@
 
 
 # ORI · Conversational BI Insight Engine  
-**Versione:** CBI-Engine v0.6  
-![Version](https://img.shields.io/badge/CBI--Engine-v0.6-blue?style=flat-square)
+**Versione:** CBI-Engine v0.6.1 
+![Version](https://img.shields.io/badge/CBI--Engine-v0.6.1-blue?style=flat-square)
 ![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-forestgreen?style=flat-square)
 ![Dataset Agnostic](https://img.shields.io/badge/Dataset-Agnostic%20(YAML--Driven)-teal?style=flat-square)
 ![No Numerical Hallucinations](https://img.shields.io/badge/Design-No%20Hallucination-critical?style=flat-square)
@@ -655,7 +655,7 @@ At this stage, the system is not a prototype in flux, but a controlled, reproduc
 
 ---
 
-## **What v0.6-stable Delivers**
+## **What v0.6.1-stable Delivers**
 
 In its current state, ORI provides:
 
@@ -677,7 +677,7 @@ Changes to phrasing, prompt tuning, or internal refactoring do not alter these g
 
 ---
 
-## **What v0.6-stable Deliberately Does Not Include**
+## **What v0.6.1-stable Deliberately Does Not Include**
 
 To preserve clarity and reliability, v0.6-stable explicitly excludes:
 
@@ -751,7 +751,10 @@ Every future extension will be evaluated against this commitment.
 ORI is an actively developed private project.
 
 The architecture, execution model, and selected outputs are shared for professional evaluation and discussion.  
- Full implementation details are available **upon request**, in appropriate contexts.
+Full implementation details are available **upon request**, in appropriate contexts.
+
+Public reference build: ORI v0.6.1 (GitHub Release).
+This page documents the frozen baseline currently exposed.
 
 ---
 
