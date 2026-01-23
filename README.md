@@ -5,7 +5,7 @@
 
 # ORI · Conversational BI Insight Engine
 
-![Version](https://img.shields.io/badge/CBI--Engine-v0.6-blue?style=flat-square)
+![Version](https://img.shields.io/badge/CBI--Engine-v0.6.1-blue?style=flat-square)
 ![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-forestgreen?style=flat-square)
 ![Dataset Agnostic](https://img.shields.io/badge/Dataset-Agnostic%20(YAML--Driven)-teal?style=flat-square)
 ![No Numerical Hallucinations](https://img.shields.io/badge/Design-No%20Hallucination-critical?style=flat-square)
@@ -14,7 +14,7 @@
 ![Architecture](https://img.shields.io/badge/Architecture-Modular%20·%20Pipeline--Driven-9cf?style=flat-square)
 
 
-**Technical Architecture Overview (v0.6-stable)**
+**Technical Architecture Overview (v0.6.1-stable)**
 
 1. **Project Overview**
 
@@ -203,7 +203,7 @@ These boundaries are intentional and documented.
 
 ---
 
-5. **v0.6-stable Scope and Future Evolution**
+5. **v0.6.1-stable Scope and Future Evolution**
 
 Version v0.6-stable operates on a single active dataset per execution and does not perform implicit multi-dataset ingestion or cross-source computation.
 
