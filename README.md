@@ -60,7 +60,6 @@
 8. **Limitations**
 
 - Explicit scope and constraints
-
 - Data quality and interpretability caveats
 
 9. **License and Disclosure**
