@@ -201,6 +201,8 @@ ORI does **not** guarantee:
 
 These boundaries are intentional and documented.
 
+---
+
 5. **v0.6-stable Scope and Future Evolution**
 
 Version v0.6-stable operates on a single active dataset per execution and does not perform implicit multi-dataset ingestion or cross-source computation.
@@ -213,9 +215,13 @@ Planned evolution includes:
 - Advanced deterministic analytics modules
 - Optional rule-based and forecasting components
 
+---
+
 6. **Availability and Access**
 
 ORI is currently provided as a local, architecture-focused prototype intended for experimentation, learning, and portfolio demonstration.
+
+---
 
 7. **License and Disclosure**
 
