@@ -37,7 +37,7 @@
 4.2 Why Divergence Is Explicit and Limited
 4.3 Multi-Source Controlled Context
 4.4 No Implicit Joins, No Silent Data Fixes
-4.5 Data Privacy by Architectural Separation ← nuovo, inserito qui
+4.5 Data Privacy by Architectural Separation
 4.6 Auditability and Traceability
 
 5. **Configuration**
