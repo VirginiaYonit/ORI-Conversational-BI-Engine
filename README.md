@@ -41,6 +41,9 @@ Technical Architecture Overview (v0.7)
 
 ORI (Conversational BI Insight Engine) is a deterministic-first analytical system designed to transform structured datasets into traceable, auditable insights through controlled language-model narration.
 
+It does not optimize for always answering.
+It optimizes for answering safely, or not answering at all.
+
 The core design principle of ORI is simple:
 
 **Python calculates. The LLM narrates.**
