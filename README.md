@@ -50,6 +50,8 @@ The core design principle of ORI is simple:
 
 All numerical computation, including aggregations, rankings, divergence measures, trends and YoY deltas, is performed deterministically in Python. The language model is never responsible for calculations, estimations, or implicit data reasoning. Its role is limited to explanation, summarization, and structured commentary over already-computed results.
 
+ORI is conversational by design, but refuses to simulate understanding when analytical guarantees cannot be met.
+
 **Why This Matters**
 
 In many BI and RAG-style systems, numerical hallucinations, silent joins, and implicit assumptions are common failure modes. ORI addresses these risks by enforcing architectural separation between computation and language generation, making analytical behavior explicit and auditable.
