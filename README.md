@@ -5,7 +5,7 @@
 
 # ORI · Conversational BI Insight Engine
 
-![Version](https://img.shields.io/badge/CBI--Engine-v0.7-blue?style=flat-square)
+![Version](https://img.shields.io/badge/CBI--Engine-v0.7.1-blue?style=flat-square)
 ![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-forestgreen?style=flat-square)
 ![Dataset Agnostic](https://img.shields.io/badge/Dataset-Agnostic%20(YAML--Driven)-teal?style=flat-square)
 ![No Numerical Hallucinations](https://img.shields.io/badge/Design-No%20Hallucination-critical?style=flat-square)
@@ -14,35 +14,77 @@
 ![Architecture](https://img.shields.io/badge/Architecture-Modular%20·%20Pipeline--Driven-9cf?style=flat-square)
 
 
-Technical Architecture Overview (v0.7)
+# ORI · Conversational BI Insight Engine
 
-1. Project Overview
+Deterministic analytics with controlled LLM narration.
 
-2. System Architecture
+ORI is a Business Intelligence system designed to produce **traceable, auditable insights** from structured data, while preventing numerical hallucinations and implicit assumptions.
 
-3. Key Design Decisions and Trade-offs
+It does not optimize for always answering.  
+It optimizes for answering **correctly, or not answering at all**.
 
-4. Guarantees and Boundaries
-
-5. v0.7 Architecture-Stabilized Scope
-
-6. Roadmap
-
-7. Availability and Access
-
-8. License
-
-9. Disclosure
-   
 ---
+
+## Core Principle
+
+**Python calculates. The LLM narrates.**
+
+- All numerical computation is deterministic (Python)
+- The LLM never performs calculations
+- The LLM only explains already computed results
+
+---
+
+## Why ORI Exists
+
+Many BI and AI systems fail silently:
+
+- numerical hallucinations  
+- implicit joins  
+- undefined metrics  
+- plausible but incorrect answers  
+
+ORI addresses this by enforcing architectural separation between computation and language generation.
+
+The result is a system that is:
+
+- auditable  
+- predictable  
+- constrained by design  
+
+---
+
+## What ORI Guarantees
+
+- No numerical hallucinations  
+- No implicit joins  
+- No silent assumptions  
+- Deterministic analytical outputs  
+
+---
+
+## What ORI Refuses To Do
+
+- Infer undefined metrics  
+- Complete ambiguous questions  
+- Simulate understanding  
+
+---
+
+## Architecture Overview (v0.7)
+
+1. Deterministic Data Pipeline  
+2. Insight Engine (routing + orchestration)  
+3. Controlled LLM narration layer  
+4. Decision logging and traceability  
+
+---
+
 
 
 ## 1. Project Overview
 
 ORI (Conversational BI Insight Engine) is a deterministic-first analytical system designed to transform structured datasets into traceable, auditable insights through controlled language-model narration.
-
-It does not optimize for always answering.
-It optimizes for answering safely, or not answering at all.
 
 The core design principle of ORI is simple:
 
@@ -55,6 +97,7 @@ ORI is conversational by design, but refuses to simulate understanding when anal
 **Why This Matters**
 
 In many BI and RAG-style systems, numerical hallucinations, silent joins, and implicit assumptions are common failure modes. ORI addresses these risks by enforcing architectural separation between computation and language generation, making analytical behavior explicit and auditable.
+Ori does not optimize for always answering: it optimizes for answering safely, or not answering at all.
 
 ---
 
@@ -182,25 +225,84 @@ This design choice reinforces ORI’s positioning as a deterministic BI engine r
 
 ---
 
+## 4. Example: Refusing to infer an undefined metric
 
-## 4. Guarantees and Boundaries
+### User Query
 
-ORI guarantees:
-
-- No numerical hallucinations
-- No implicit joins
-- No silent data corrections
-- No undocumented assumptions
-
-ORI does **not** guarantee:
-
-- Exhaustive exploratory analysis
-- Automatic insight discovery
-- Semantic reasoning beyond provided context
-
-These boundaries are intentional and documented.
+> Identify the 5 periods where productivity (Passengers_per_Movement) diverges most from the operational driver (Bologna_Movements). Use a standardized divergence measure and return a table.
 
 ---
+
+### What the system did
+
+The query implicitly requires a derived metric (`Passengers_per_Movement`) that is not explicitly defined in the dataset.
+
+ORI did **not** construct this metric.
+
+Instead, it:
+
+- identified the explicitly available KPIs:
+  - `Bologna_Passengers`
+  - `Bologna_Movements`
+- restricted the computation to those variables
+- computed divergence deterministically using:
+  - Z-score of period-over-period variations
+- produced a traceable and reproducible table
+
+---
+
+### Why this matters
+
+Most systems would:
+
+- silently derive `Passengers_per_Movement`
+- assume a definition
+- return a plausible but unverifiable result
+
+ORI explicitly refuses to do this.
+
+This behavior is enforced by design:
+
+> No new metrics are introduced unless explicitly defined in the analytical context.
+
+---
+
+### Result (excerpt)
+
+| Year | Bologna_Movements | Bologna_Passengers | Divergence_Z |
+|------|-------------------|--------------------|--------------|
+| 2022 | 70871             | 8496000            | -3.67        |
+| 2020 | 30139             | 2506258            | 1.93         |
+| 2021 | 42477             | 4103816            | -1.82        |
+| 2006 | 63585             | 4001436            | 1.56         |
+| 2003 | 56738             | 3562010            | 0.49         |
+
+---
+
+### System Constraint (explicit)
+
+> Divergence analysis is limited to a maximum of two KPIs to preserve interpretability and traceability.
+
+---
+
+### Interpretation Layer
+
+The LLM provides narrative analysis **only after deterministic computation**, including:
+
+- pattern identification
+- risk of misinterpretation
+- suggested follow-up questions
+
+No new numerical values are introduced at this stage.
+
+---
+
+### Key Takeaway
+
+A system that completes missing meaning produces plausible answers.
+
+A system that exposes missing meaning produces reliable ones.
+
 
 
 ## 5. v0.7 Architecture-Stabilized Scope
@@ -228,10 +330,11 @@ Datasets are ingested and profiled independently, with no implicit joins or auto
 	- No implicit analytical assumptions
 ORI does not infer missing relationships, perform silent data corrections, or approximate numerical results.
 
-	- Known architectural gap: analytical contract validation
-Version v0.7 makes explicit a remaining architectural requirement: v0.7 surfaces the need for an explicit analytical contract validation step, which will be addressed in future iterations.
-At present, ORI determines how to answer a question and whether sufficient data is available for deterministic computation, but it does not yet formally validate whether a user question is fully specified with respect to its implied analytical contract.
-This capability is intentionally deferred to preserve correctness and avoid implicit assumptions, and it will be introduced in a subsequent release.**
+	- Known Limitation:
+
+ORI currently does not support on-the-fly metric derivation.
+
+This is a deliberate design choice to prevent implicit assumptions and ensure auditability.
 
 ---
 
