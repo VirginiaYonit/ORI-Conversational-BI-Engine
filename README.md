@@ -73,7 +73,8 @@ The system is structured in layers:
   * table extraction
   * quality analysis
 
----
+
+
 
 For a complete architecture map, see:
 → docs/architecture/ori_full_architecture.md
