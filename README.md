@@ -3,8 +3,6 @@
 </p>
 
 
-# ORI · Conversational BI Insight Engine
-
 ![Version](https://img.shields.io/badge/CBI--Engine-v0.8-blue?style=flat-square)
 ![LLM Agnostic](https://img.shields.io/badge/LLM-Agnostic-forestgreen?style=flat-square)
 ![Dataset Agnostic](https://img.shields.io/badge/Dataset-Agnostic%20(YAML--Driven)-teal?style=flat-square)
