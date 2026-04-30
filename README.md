@@ -14,10 +14,6 @@
 ![Architecture](https://img.shields.io/badge/Architecture-Modular%20·%20Pipeline--Driven-9cf?style=flat-square)
 
 
-<p align="left">
-  <img src="assets/logo_ori_minimal.svg" width="120"/>
-</p>
-
 # ORI · Conversational BI Insight Engine
 
 Deterministic analytics with controlled LLM narration.
