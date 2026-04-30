@@ -45,7 +45,6 @@ ORI treats governance as a runtime property, not as a documentation layer.
 ## Architecture
 
 
-
 The system is structured in layers:
 
 * **Config (YAML)**
@@ -76,6 +75,11 @@ The system is structured in layers:
 
 ---
 
+For a complete architecture map, see:
+→ docs/architecture/ori_full_architecture.md
+
+---
+
 ## Governance by Design
 
 ORI embeds governance directly into the system architecture.
@@ -100,6 +104,7 @@ In ORI, governance is not documentation.
 It is enforced at runtime.
 
 ---
+
 
 
 ## How It Works
