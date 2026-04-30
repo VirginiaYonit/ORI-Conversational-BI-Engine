@@ -90,13 +90,105 @@ The system is structured in layers:
 
 ## Example
 
-```text
-Domanda:
-"Mostra la crescita"
+### 1. Deterministic answer
 
-Risposta:
-"Specifica il KPI e il tipo di crescita (YoY, assoluta, trend)."
+**User input**
+
+```text
+Mostra la tabella di Bologna_Passengers
 ```
+
+**ORI output (deterministic)**
+
+```text
+1. Risposta sintetica
+Tabella dei valori per Bologna_Passengers, estratta in modo deterministico da kpi_data.
+
+2. Dettaglio numerico e tabella
+Year | Value
+2000 | 3524235
+2001 | 3440639
+...
+2024 | 10775972
+
+3. Limiti
+Se mancano anni o valori in input, non vengono inventati.
+```
+
+---
+
+### 2. Contract enforcement (no guessing)
+
+**User input**
+
+```text
+Confronta la media dei voli nazionali e Bologna_Movements
+```
+
+**ORI output (contract)**
+
+```text
+[Calcolo deterministico non disponibile. Richiesta bloccata dal contratto]
+
+Per rispondere in modo deterministico serve una scelta esplicita.
+
+Scegli un secondo KPI tra:
+Bologna_Passengers, Annual_CO2_Emissions, Bologna_Movements.
+```
+
+---
+
+### 3. Deterministic comparison
+
+**User input**
+
+```text
+Confronta Bologna_Passengers e Bologna_Movements: correlazione e divergenza
+```
+
+**ORI output (deterministic)**
+
+```text
+Correlazione complessiva: 0.825
+
+Year | Bologna_Passengers | Bologna_Movements | Divergence_Z
+2022 | 8496000 | 70871 | 3.67
+2020 | 2506258 | 30139 | -1.93
+...
+```
+
+---
+
+### 4. Conceptual question handled safely
+
+**User input**
+
+```text
+Mostrami gli anni peggiori per l’efficienza operativa
+```
+
+**ORI output**
+
+```text
+Nel contesto corrente non esiste una metrica unica chiamata 'efficienza'.
+
+Possiamo operazionalizzarla usando KPI proxy:
+- TOTAL_DELAY_MIN
+- Annual_CO2_Emissions
+- IFR_DEPARTURES
+
+Indica quale proxy utilizzare.
+```
+
+---
+
+### What this shows
+
+* ORI computes metrics deterministically
+* ORI blocks ambiguous or invalid requests
+* ORI does not infer missing definitions
+* ORI separates calculation from interpretation
+
 
 ---
 
