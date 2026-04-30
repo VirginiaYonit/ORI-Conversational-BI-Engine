@@ -28,6 +28,8 @@ ORI is a Conversational BI system designed to ensure that:
 
 The goal is to make conversational analytics **reliable, traceable, and auditable**.
 
+ORI treats governance as a runtime property, not as a documentation layer.
+
 ---
 
 ## Key Features
@@ -73,6 +75,32 @@ The system is structured in layers:
   * quality analysis
 
 ---
+
+## Governance by Design
+
+ORI embeds governance directly into the system architecture.
+
+Two formal policies define its behavior:
+
+* **LLM Intervention Policy**
+  Defines when and how the LLM is allowed to operate
+  → `/docs/governance/LLM_Intervention_Policy.md`
+
+* **Analytical Request Admission Policy**
+  Defines the contract logic (ASK / REFUSE / OK)
+  → `/docs/governance/Analytical_Request_Admission_Policy.md`
+
+These policies ensure that:
+
+* no numerical output is generated without deterministic computation
+* ambiguous requests are explicitly handled
+* system behavior is traceable and auditable
+
+In ORI, governance is not documentation.
+It is enforced at runtime.
+
+---
+
 
 ## How It Works
 
@@ -189,7 +217,6 @@ Indica quale proxy utilizzare.
 * ORI does not infer missing definitions
 * ORI separates calculation from interpretation
 
-
 ---
 
 ## What ORI is NOT
@@ -305,4 +332,3 @@ AI Operations Specialist
 👉 https://virginialevy.com/
 
 ---
-
