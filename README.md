@@ -356,23 +356,21 @@ All technical decisions, system architecture, and implementation choices are the
 ---
 
 
-## License
+## Access to Code
 
-This repository is released under a Source-Available License for evaluation and demonstration purposes.
+This repository intentionally does not include the full source code.
 
-The code may be read, executed, and reviewed for non-commercial evaluation.
-Commercial use, redistribution, or derivative works require an explicit licensing agreement with the author.
+ORI is not presented as a code artifact, but as a governed system.
 
-For commercial inquiries or pilot programs, please contact the author.
+Its core value lies in how computation, validation, and interpretation are controlled, not only in how they are implemented.
 
----
+The system is not a black box.
+Code access is available for technical evaluation and review.
 
-
-## Author
-
-Virginia Levy Abulafia
-AI Operations Specialist
+If you want to assess the implementation:
 
 👉 https://virginialevy.com/
 
----
+Access is granted selectively.
+
+
