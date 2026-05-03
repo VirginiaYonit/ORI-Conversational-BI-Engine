@@ -73,6 +73,44 @@ The system is structured in layers:
   * table extraction
   * quality analysis
 
+## Architecture
+
+```mermaid
+flowchart TD
+
+Q[User Question] --> ENG[Insight Engine]
+
+ENG --> CONTRACT[Contract Validation]
+
+CONTRACT -->|ASK| ASK[Ask for clarification]
+CONTRACT -->|REFUSE| REFUSE[Reject request]
+CONTRACT -->|OK| DET[Deterministic Computation]
+
+DET --> TOOLS[Analytical Tools: trend, yoy, divergence, table, quality]
+
+TOOLS --> RESULT[Deterministic Result]
+
+RESULT --> LLM_CHECK[LLM allowed]
+
+LLM_CHECK -->|yes| LLM[LLM explanation only]
+LLM_CHECK -->|no| FINAL_DET[Final deterministic answer]
+
+LLM --> FINAL_DET
+
+DET -->|not possible| FALLBACK[LLM fallback with contract]
+
+FALLBACK --> GUARD[No new metrics check]
+
+GUARD -->|fail| BLOCK[Block output]
+GUARD -->|pass| FINAL_LLM[LLM answer]
+
+ASK --> FINAL[Final Answer]
+REFUSE --> FINAL
+FINAL_DET --> FINAL
+FINAL_LLM --> FINAL
+BLOCK --> FINAL
+
+```
 
 
 
