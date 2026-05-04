@@ -347,14 +347,6 @@ v0.8 focuses on:
 
 ---
 
-##  Disclosure
-
-This project was developed by Virginia Levy Abulafia with collaborative support from ChatGPT for architectural review, debugging, prompt refinement, and design optimization.
-
-All technical decisions, system architecture, and implementation choices are the direct responsibility of the author.
-
----
-
 
 ## Access to Code
 
@@ -372,5 +364,15 @@ If you want to assess the implementation:
 👉 https://virginialevy.com/
 
 Access is granted selectively.
+
+---
+
+
+##  Disclosure
+
+This project was developed by Virginia Levy Abulafia with collaborative support from ChatGPT for architectural review, debugging, prompt refinement, and design optimization.
+
+All technical decisions, system architecture, and implementation choices are the direct responsibility of the author.
+
 
 
