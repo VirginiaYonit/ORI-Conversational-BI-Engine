@@ -28,7 +28,7 @@ ORI is a Conversational BI system designed to ensure that:
 * the LLM is used **only for explanation, never for calculation**
 * every request is validated through an explicit **contract (ASK / REFUSE / OK)**
 
-The goal is to make conversational analytics **reliable, traceable, and auditable**.
+The goal is to make conversational analytics **reliable, traceable, and auditable**: *conversation as governed protocol*.
 
 ORI treats governance as a runtime property, not as a documentation layer.
 
