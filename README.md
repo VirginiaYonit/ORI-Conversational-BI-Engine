@@ -20,7 +20,6 @@ Deterministic analytics with controlled LLM narration.
 
 ## Overview
 
-ORI is not a chatbot that answers BI questions:
 ORI is a governed analytical runtime that decides whether a question is computable, routes it to deterministic tools when possible, asks for clarification when needed, and prevents uncontrolled LLM-generated numbers.
 
 ORI is a Conversational BI system designed to ensure that:
@@ -160,6 +159,7 @@ It is enforced at runtime.
 3. Deterministic computation (if possible)
 4. Optional LLM narration (no calculations allowed)
 5. Guardrails prevent hallucinated metrics
+
 
 ---
 
@@ -357,7 +357,8 @@ This repository intentionally does not include the full source code.
 
 ORI is not presented as a code artifact, but as a governed system.
 
-Its core value lies in how computation, validation, and interpretation are controlled, not only in how they are implemented.
+Its core value lies in how computation, validation, and interpretation are controlled, not only in how they are implemented. 
+Warnings shape interpretation, not suppress it.
 
 The system is not a black box.
 Code access is available for technical evaluation and review.
