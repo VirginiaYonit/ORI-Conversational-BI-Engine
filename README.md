@@ -20,6 +20,9 @@ Deterministic analytics with controlled LLM narration.
 
 ## Overview
 
+ORI is not a chatbot that answers BI questions:
+ORI is a governed analytical runtime that decides whether a question is computable, routes it to deterministic tools when possible, asks for clarification when needed, and prevents uncontrolled LLM-generated numbers.
+
 ORI is a Conversational BI system designed to ensure that:
 
 * all numerical results are **computed deterministically (Python/pandas)**
