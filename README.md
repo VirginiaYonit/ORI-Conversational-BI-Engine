@@ -430,6 +430,8 @@ Architectural principle:
 protocol-driven runtime continuity
 is more robust than text-inferred conversational continuity.
 
+---
+
 
 ### Core architectural discovery of v0.9:
 
