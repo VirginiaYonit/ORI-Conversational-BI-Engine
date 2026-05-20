@@ -1,0 +1,14 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="oriMinimalGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e88e5"/>
+      <stop offset="100%" stop-color="#43a047"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Cerchio principale (la "O") -->
+  <circle cx="60" cy="60" r="36" fill="none" stroke="url(#oriMinimalGradient)" stroke-width="8"/>
+
+  <!-- Raggio di luce -->
+  <line x1="60" y1="60" x2="92" y2="36" stroke="#f9a825" stroke-width="7" stroke-linecap="round"/>
+</svg>
