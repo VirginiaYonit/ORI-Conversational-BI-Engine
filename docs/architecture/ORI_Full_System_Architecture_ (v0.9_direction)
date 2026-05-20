@@ -1,0 +1,335 @@
+┌─────────────────────────────────────────────────────────────┐
+│                    ORI v0.9 ARCHITECTURE                    │
+│         Deterministic Conversational BI Runtime             │
+└─────────────────────────────────────────────────────────────┘
+
+
+
+                         ┌─────────────────┐
+                         │   USER INPUT    │
+                         └────────┬────────┘
+                                  │
+                                  ▼
+
+
+╔═════════════════════════════════════════════════════════════╗
+║                     CONTROL PLANE                           ║
+║      Governance, admissibility, orchestration, policy       ║
+╚═════════════════════════════════════════════════════════════╝
+
+
+        ┌──────────────────────────────────────────┐
+        │RUNTIME GOVERNANCE / TRANSACTION LAYER    │
+        │------------------------------------------│
+		│ - runtime states                         │
+		│ - analytical transactions                │
+		│ - continuation semantics                 │
+		│ - suspension / resume                    │
+		│ - transaction completeness               │
+		│ - protocol transitions                   │
+		│ - runtime legality                       │
+		│                                          │
+		│ RuntimeSession                           │
+		│ PendingAnalyticalIntent                  │
+		│ RuntimeState                             │
+		│ conversation_state.py                    │
+		│ runtime_session.py                       │
+        │                                          │
+        │ RuntimeState                             │
+        │ conversation_state.py                    │
+        └────────────────┬─────────────────────────┘
+                         │
+                         ▼
+
+
+        ┌──────────────────────────────────────┐
+        │ CONTRACT / ADMISSIBILITY LAYER       │
+        │--------------------------------------│
+        │ - admissibility                      │
+        │ - ambiguity detection                │
+        │ - KPI recognition                    │
+        │ - modality constraints               │
+        │ - operation constraints              │
+        │ - fallback permissions               │
+        │                                      │
+        │ contract_validator.py                │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+        ┌──────────────────────────────────────┐
+        │ KPI GOVERNANCE / SCOPE LAYER         │
+        │--------------------------------------│
+        │ - KPI universe resolution            │
+        │ - scope enforcement                  │
+        │ - exclusion reasons                  │
+        │ - KPI ranking                        │
+        │ - human checkpoint                   │
+        │                                      │
+        │ kpi_scope.py                         │
+        │ kpi_selector.py                      │
+        │ kpi_policy.py                        │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+        ┌──────────────────────────────────────┐
+        │ INTENT + DISPATCH LAYER              │
+        │--------------------------------------│
+        │ - deterministic intents              │
+        │ - routing decisions                  │
+        │ - operation selection                │
+        │ - pre/post guidance                  │
+        │                                      │
+        │ deterministic_router.py              │
+        │ deterministic_dispatcher.py          │
+        │ guidance_router.py                   │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+        ┌──────────────────────────────────────┐
+        │ TRANSACTION COMPLETENESS LAYER       │
+        │--------------------------------------│
+        │ - operation requirements             │
+        │ - parameter completeness             │
+        │ - pending transaction opening        │
+        │ - continuation validation            │
+        │ - execution resumption               │
+        │                                      │
+        │ deterministic_runtime.py             │
+        │ runtime_session.py                   │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+╔═════════════════════════════════════════════════════════════╗
+║                    EXECUTION PLANE                          ║
+║          Deterministic computation and analytics            ║
+╚═════════════════════════════════════════════════════════════╝
+
+
+        ┌──────────────────────────────────────┐
+        │ DETERMINISTIC ANALYTICS TOOLS        │
+        │--------------------------------------│
+        │ - trend analysis                     │
+        │ - YoY analysis                       │
+        │ - divergence                         │
+        │ - variability                        │
+        │ - quality analysis                   │
+        │ - descriptive compare                │
+        │                                      │
+        │ trend tools                          │
+        │ quality_tool.py                      │
+        │ divergence_tool.py                   │
+        │ descriptive_compare_tool.py          │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+        ┌──────────────────────────────────────┐
+        │ PROFILING / DATA INTELLIGENCE        │
+        │--------------------------------------│
+        │ - numeric profiling                  │
+        │ - correlations                       │
+        │ - growth                             │
+        │ - anomaly detection                  │
+        │ - temporal granularity               │
+        │ - missingness intelligence           │
+        │                                      │
+        │ profiling.py                         │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+        ┌──────────────────────────────────────┐
+        │ DETERMINISTIC ANSWER                 │
+        │--------------------------------------│
+        │ Structured deterministic response    │
+        │ with governed analytical output      │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+
+╔═════════════════════════════════════════════════════════════╗
+║                 OPTIONAL NARRATION LAYER                    ║
+║            LLM allowed only under explicit policy           ║
+╚═════════════════════════════════════════════════════════════╝
+
+
+        ┌──────────────────────────────────────┐
+        │ COMMENTARY POLICY                    │
+        │--------------------------------------│
+        │ - narration allowed?                 │
+        │ - deterministic completeness check   │
+        │ - no new calculations                │
+        │ - no scope expansion                 │
+        │                                      │
+        │ commentary policy                    │
+        │ no-new-metrics guardrails            │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+        ┌──────────────────────────────────────┐
+        │ OPTIONAL LLM COMMENTARY              │
+        │--------------------------------------│
+        │ - explanatory narration only         │
+        │ - no new metrics                     │
+        │ - no new reasoning scope             │
+        │ - deterministic-first                │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+
+╔═════════════════════════════════════════════════════════════╗
+║                  OBSERVABILITY LAYER                        ║
+║             Logging, auditability, traceability             ║
+╚═════════════════════════════════════════════════════════════╝
+
+
+        ┌──────────────────────────────────────┐
+        │ AUDIT / TRACEABILITY                 │
+        │--------------------------------------│
+        │ - runtime logs                       │
+        │ - decision logs                      │
+        │ - QA audit                           │
+        │ - policy traceability                │
+        │ - source attribution                 │
+        │                                      │
+        │ decision_logger.py                   │
+        │ audit mode                           │
+        └────────────────┬─────────────────────┘
+                         │
+                         ▼
+
+
+                 ┌────────────────────┐
+                 │   FINAL RESPONSE   │
+                 └────────────────────┘
+
+
+                    ───────────────────
+                    CENTRAL ORCHESTRATOR
+                    ───────────────────
+
+                     ┌────────────────┐
+                     │ InsightEngine  │
+                     └────────────────┘
+
+           NOT:
+           - execution engine
+           - governance engine
+           - analytics engine
+
+           BUT:
+           - orchestration coordinator
+           - runtime coordinator
+		   - transactional flow coordinator
+
+	
+	
+
+ ---
+ 
+ 
+transaction-aware runtime semantics
+
+	Incomplete analytical requests
+	are now treated as:
+	
+		- runtime objects
+		- resumable transactions
+		- governed execution states
+	
+	and not only as:
+	
+		- conversational context
+		- textual continuity
+		- rewrite persistence
+
+
+	New runtime lifecycle:
+
+		question
+		   ↓
+		transaction completeness evaluation
+		   ↓
+		pending transaction opening
+		   ↓
+		suspension
+		   ↓
+		continuation
+		   ↓
+		deterministic execution
+		   ↓
+		cleanup
+
+---		
+ 
+deterministic layer 
+
+NOT "feature" 
+
+BUT epistemic boundary:
+
+		meaning control
+		admissibility
+		runtime contracts
+		scope governance
+		narration constraints
+
+	(cosa il sistema SA davvero
+	 cosa PUÒ calcolare
+	 cosa è semanticamente ammissibile
+	 cosa NON può inferire
+	 cosa richiede chiarimento umano)
+
+In Ori: 
+	
+	question
+		↓
+	semantic admissibility
+		↓
+	runtime transaction governance
+		↓
+	transaction completeness
+		↓
+	scope enforcement
+		↓
+	deterministic execution
+		↓
+	controlled narration
+		↓
+	scope enforcement
+		↓
+	deterministic execution
+		↓
+	controlled narration
+	
+---
+
+
+ORI is evolving from:
+
+	conversational BI orchestration
+
+toward:
+
+	transaction-aware governed analytical runtime.
+
+
+Core architectural discovery of v0.9:
+
+"An incomplete analytical request
+must be able to exist
+as an autonomous runtime object."
