@@ -336,7 +336,6 @@ All analytical execution remains:
 - runtime-controlled
 - deterministically bounded.
 
----
 
 ### Not a generative analytics engine
 
@@ -348,13 +347,13 @@ ORI does not:
 
 If data or meaning is missing → the system stops.
 
----
 
 ### Not a simulation of analytic intelligence
 
 ORI is designed to govern analytical execution.
 
 ---
+
 ## Design Principles
 
 * Deterministic first
