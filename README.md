@@ -93,7 +93,6 @@ The system is structured in layers:
   * table extraction
   * quality analysis
 
-## Architecture
 
 The current v0.9 direction introduces:
 - runtime transaction governance,
