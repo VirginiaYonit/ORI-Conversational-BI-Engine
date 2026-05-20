@@ -433,9 +433,7 @@ is more robust than text-inferred conversational continuity.
 
 ### Core architectural discovery of v0.9:
 
-**"An incomplete analytical request
-**must be able to exist**
-**as an autonomous runtime object."**
+> An incomplete analytical request must be able to exist as an autonomous runtime object.
 
 
 ---
