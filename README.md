@@ -14,7 +14,7 @@
 
 # ORI · Conversational BI Insight Engine
 
-Deterministic analytics with controlled LLM narration.
+Governed analytical runtime with deterministic computation and controlled LLM narration.
 
 ---
 
@@ -22,15 +22,33 @@ Deterministic analytics with controlled LLM narration.
 
 ORI is a governed analytical runtime that decides whether a question is computable, routes it to deterministic tools when possible, asks for clarification when needed, and prevents uncontrolled LLM-generated numbers.
 
+ORI now supports runtime-governed analytical continuation:
+incomplete analytical requests can persist as explicit runtime transactions
+until the required parameters are completed.
+
 ORI is a Conversational BI system designed to ensure that:
 
 * all numerical results are **computed deterministically (Python/pandas)**
 * the LLM is used **only for explanation, never for calculation**
 * every request is validated through an explicit **contract (ASK / REFUSE / OK)**
 
-The goal is to make conversational analytics **reliable, traceable, and auditable**: *conversation as governed protocol*.
+The goal is to make conversational analytics **reliable, traceable, and auditable**: *conversation as governed protocol*
 
-ORI treats governance as a runtime property, not as a documentation layer.
+ORI progressively evolved from:
+- conversational BI orchestration
+
+toward:
+- transaction-aware analytical runtime governance.
+
+Incomplete analytical requests are no longer treated only as conversational context,
+but as explicit runtime objects with:
+- lifecycle,
+- continuation semantics,
+- completeness rules,
+- deterministic execution resumption.
+
+ORI treats governance as a runtime property, not as a documentation layer, 
+it is not a chatbot that answers BI questions.
 
 ---
 
@@ -77,53 +95,21 @@ The system is structured in layers:
 
 ## Architecture
 
-```mermaid
-flowchart TD
+The current v0.9 direction introduces:
+- runtime transaction governance,
+- continuation semantics,
+- explicit analytical negotiation lifecycle,
+- transaction-aware deterministic orchestration.
 
-Q[User Question] --> ENG[Insight Engine]
-
-ENG --> CONTRACT[Contract Validation]
-
-CONTRACT -->|ASK| ASK[Ask for clarification]
-CONTRACT -->|REFUSE| REFUSE[Reject request]
-CONTRACT -->|OK| DET[Deterministic Computation]
-
-DET --> TOOLS[Analytical Tools: trend, yoy, divergence, table, quality]
-
-TOOLS --> RESULT[Deterministic Result]
-
-RESULT --> LLM_CHECK[LLM allowed]
-
-LLM_CHECK -->|yes| LLM[LLM explanation only]
-LLM_CHECK -->|no| FINAL_DET[Final deterministic answer]
-
-LLM --> FINAL_DET
-
-DET -->|not possible| FALLBACK[LLM fallback with contract]
-
-FALLBACK --> GUARD[No new metrics check]
-
-GUARD -->|fail| BLOCK[Block output]
-GUARD -->|pass| FINAL_LLM[LLM answer]
-
-ASK --> FINAL[Final Answer]
-REFUSE --> FINAL
-FINAL_DET --> FINAL
-FINAL_LLM --> FINAL
-BLOCK --> FINAL
-
-```
-
-
-
-For a complete architecture map, see:
-→ docs/architecture/ori_full_architecture.md
+See:
+docs/architecture/ORI_Full_System_Architecture_(v0.9_direction)
 
 ---
 
 ## Governance by Design
 
 ORI embeds governance directly into the system architecture.
+Its core value lies in how computation, validation, and interpretation are controlled, not only in how they are implemented. 
 
 Two formal policies define its behavior:
 
@@ -144,22 +130,47 @@ These policies ensure that:
 In ORI, governance is not documentation.
 It is enforced at runtime.
 
+
 ---
 
+## Runtime Transaction Semantics
+ORI treats incomplete analytical requests as governed runtime transactions.
 
+Example:
+
+"Variabilità statistica?"
+→ request incomplete
+→ runtime opens pending transaction
+→ asks for KPI
+
+"Bologna_Passengers"
+→ runtime resumes transaction
+→ deterministic execution continues
+
+This enables:
+- governed continuation
+- interruption survival
+- execution resumption
+- explicit analytical negotiation
+
+without relying only on conversational text reconstruction.
+
+
+---
 
 ## How It Works
 
 1. User asks a question
-2. Contract validation:
-
-   * ASK → missing information
-   * REFUSE → invalid request
-   * OK → proceed
-3. Deterministic computation (if possible)
-4. Optional LLM narration (no calculations allowed)
-5. Guardrails prevent hallucinated metrics
-
+2. Runtime evaluates:
+   - admissibility
+   - completeness
+   - state legality
+3. If incomplete:
+   - runtime opens analytical transaction
+   - asks for missing parameters
+4. Deterministic execution (if computable)
+5. Optional LLM commentary
+6. Guardrails prevent hallucinated metrics and uncontrolled interpretation
 
 ---
 
@@ -255,6 +266,37 @@ Possiamo operazionalizzarla usando KPI proxy:
 Indica quale proxy utilizzare.
 ```
 
+### 5. Runtime continuation
+
+**User input**
+
+```text
+Variabilità statistica?
+```
+
+**ORI output**
+
+```
+La richiesta analitica è incompleta.
+Serve almeno un KPI esplicito per procedere.
+```
+
+**User input**
+```
+Bologna_Passengers
+```
+
+**ORI output**
+```
+Analisi deterministica della variabilità statistica di Bologna_Passengers.
+```
+
+What this shows:
+
+- incomplete analytical requests persist at runtime
+- continuation is governed explicitly
+- deterministic execution resumes only after completeness
+
 ---
 
 ### What this shows
@@ -281,6 +323,20 @@ ORI operates on **structured datasets**, computing deterministic metrics.
 
 All computations happen **outside the LLM**, in Python.
 
+
+### Not an autonomous analytical agent
+
+ORI does not autonomously:
+- invent analytical goals
+- prioritize KPIs
+- infer missing operational semantics
+- complete ambiguous quantitative intent
+
+All analytical execution remains:
+- contract-governed
+- runtime-controlled
+- deterministically bounded.
+
 ---
 
 ### Not a generative analytics engine
@@ -295,12 +351,18 @@ If data or meaning is missing → the system stops.
 
 ---
 
+### Not a simulation of analytic intelligence
+
+ORI is designed to govern analytical execution.
+
+---
 ## Design Principles
 
 * Deterministic first
 * Explicit failure over silent correction
 * No silent inference
 * LLM as narrator, not calculator
+
 
 > Without enforcement, governance is just intent.
 
@@ -334,19 +396,49 @@ python -m cli.run_report_openai
 
 ## Current Status
 
-v0.8 focuses on:
-
-* deterministic tool extraction
-* contract enforcement
-* architecture stabilization
+v0.9 focuses on:
+- runtime governance
+- transaction-aware continuation
+- deterministic orchestration
+- state legality
+- behavioral stability
+- analytical negotiation integrity
 
 ---
 
-## Future Work
+Behavioral regression tests for conversational governance are documented under:
+tests/manual/ori_qa_test_set_v1.md
 
-* derived KPI layer (v0.9)
-* orchestration refactor
-* extended governance modules
+---
+
+## Runtime evolution direction
+
+ORI now includes an explicit runtime transactional layer:
+
+- RuntimeSession
+- PendingAnalyticalIntent
+- continuation-aware execution
+- deterministic resumption flow
+
+Future evolution may extend this toward:
+- multi-step parameter accumulation
+- timeout semantics
+- explicit cancellation
+- transaction replayability
+- runtime audit reconstruction
+
+Architectural principle:
+
+protocol-driven runtime continuity
+is more robust than text-inferred conversational continuity.
+
+
+### Core architectural discovery of v0.9:
+
+**"An incomplete analytical request
+**must be able to exist**
+**as an autonomous runtime object."**
+
 
 ---
 
@@ -365,7 +457,7 @@ Code access is available for technical evaluation and review.
 
 If you want to assess the implementation:
 
-👉 https://virginialevy.com/
+-> https://virginialevy.com/
 
 Access is granted selectively.
 
